@@ -1,0 +1,15 @@
+# Python-specific
+__pycache__/
+.venv/
+*.pyc
+*.ipynb
+*.ipynb_checkpoints
+
+# Test artifacts
+__snapshots__/
+.coverage
+.pytest_cache/
+.mypy_cache/
+
+# Temp plots
+temp_plot_*.png
