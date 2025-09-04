@@ -23,7 +23,7 @@
 - Коефіцієнт: 0.8548
 - p-value: 0.0000
 - Тип зв’язку: прямий, сила: сильний
-- Гістограми:
+- Гістограми:  
   ![](results/histograms.png)
-- Scatterplot:
+- Scatterplot:  
   ![](results/scatterplot.png)
