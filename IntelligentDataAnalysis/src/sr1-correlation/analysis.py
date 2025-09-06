@@ -4,8 +4,8 @@ import seaborn as sns
 from scipy.stats import pearsonr, spearmanr, shapiro
 from datetime import datetime
 
-# df = pd.read_csv("data/lr1-correlation-test-ai.csv")
-df = pd.read_csv("data/lr1-analytics-google-flue.csv")
+# df = pd.read_csv("data/sr1-correlation-test-ai.csv")
+df = pd.read_csv("data/sr1-analytics-google-flue.csv")
 # x = df['X']
 # y = df['Y']
 # x_name = "X1"
@@ -24,12 +24,12 @@ plt.subplot(1, 2, 2)
 sns.histplot(y, kde=True, color='salmon')
 plt.title(f"Гістограма {y_name}")
 plt.tight_layout()
-plt.savefig('results/histograms.png')
+plt.savefig('results/sr1-correlation/histograms.png')
 plt.close()
 
 sns.scatterplot(x=x, y=y, data=df)
 plt.title(f"Діаграма розсіювання {x_name} та {y_name}")
-plt.savefig('results/scatterplot.png')
+plt.savefig('results/sr1-correlation/scatterplot.png')
 plt.close()
 
 stat_x, p_x = shapiro(x)
@@ -59,7 +59,7 @@ direction = 'прямий' if corr > 0 else 'обернений'
 
 print(f"Тип зв’язку: {direction}, сила: {strength}")
 
-with open("report.md", "a", encoding="utf-8") as f:
+with open("results/sr1-correlation/report.md", "a", encoding="utf-8") as f:
     f.write(f"\n## Результати для {x_name} vs {y_name}\n")
     f.write(f"- Дата: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
     f.write(f"- Метод кореляції: {method}\n")

@@ -18,12 +18,10 @@
 
 ## Результати для Page Views (page_view) vs Clicks (ad_click)
 
-- Дата: 2025-09-04 19:13
+- Дата: 2025-09-06 15:15
 - Метод кореляції: Spearman
 - Коефіцієнт: 0.8548
 - p-value: 0.0000
 - Тип зв’язку: прямий, сила: сильний
-- Гістограми:  
-  ![](results/histograms.png)
-- Scatterplot:  
-  ![](results/scatterplot.png)
+- Гістограми: ![](results/histograms.png)
+- Scatterplot: ![](results/scatterplot.png)
