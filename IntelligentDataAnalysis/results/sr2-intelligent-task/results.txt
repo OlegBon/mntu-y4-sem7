@@ -1,0 +1,8 @@
+LDA Accuracy: 1.00
+QDA Accuracy: 1.00
+LDA Confusion Matrix:
+[[10  0]
+ [ 0 10]]
+QDA Confusion Matrix:
+[[10  0]
+ [ 0 10]]
