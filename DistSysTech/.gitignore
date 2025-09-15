@@ -1,0 +1,47 @@
+# Visual Studio build artifacts
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
+*.tlog
+*.idb
+*.pdb
+*.ipch
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.cache
+*.dbmdl
+
+# C++ specific
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.iobj
+*.ipdb
+
+# VS project files
+*.vcxproj.user
+*.vcxproj.filters
+*.vcxproj.*
+*.csproj.user
+*.csproj.*
+*.sln.docstates
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Debugging
+*.dbg
+*.dmp
+
+# Others
+*.vs/
+.vs/
+TestResults/
