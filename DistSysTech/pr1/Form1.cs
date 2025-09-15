@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
@@ -6,17 +6,17 @@ namespace pr1
 {
     public partial class Form1 : Form
     {
-        // Внутрішні змінні
-        int[] array = null!;// масив-оригінал, null - початкове значення
-        int[] arrayBub = null!;// масив даних після сортування бульбашкою
-        int[] arrayIns = null!;// масив після сортуванням вставкою
-        int[] arraySel = null!;// масив після сортування вибором
+        // Р’РЅСѓС‚СЂС–С€РЅС– Р·РјС–РЅРЅС–
+        int[] array = null!;// РјР°СЃРёРІ-РѕСЂРёРіС–РЅР°Р», null - РїРѕС‡Р°С‚РєРѕРІРµ Р·РЅР°С‡РµРЅРЅСЏ
+        int[] arrayBub = null!;// РјР°СЃРёРІ РґР°РЅРёС… РїС–СЃР»СЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ Р±СѓР»СЊР±Р°С€РєРѕСЋ
+        int[] arrayIns = null!;// РјР°СЃРёРІ РїС–СЃР»СЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏРј РІСЃС‚Р°РІРєРѕСЋ
+        int[] arraySel = null!;// РјР°СЃРёРІ РїС–СЃР»СЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІРёР±РѕСЂРѕРј
 
-        // Змінні, що фіксують час початку виконання алгоритмів
-        TimeSpan tsBubble;// Алгоритм бульбашки
-        TimeSpan tsIns;// Вставка
-        TimeSpan tsSel;// Вибір
-        bool fCancelBub;// Якщо true, то була натиснута кнопка Stop – зупинити всі потоки
+        // Р—РјС–РЅРЅС–, С‰Рѕ С„С–РєСЃСѓСЋС‚СЊ С‡Р°СЃ РїРѕС‡Р°С‚РєСѓ РІРёРєРѕРЅР°РЅРЅСЏ Р°Р»РіРѕСЂРёС‚РјС–РІ
+        TimeSpan tsBubble;// РђР»РіРѕСЂРёС‚Рј Р±СѓР»СЊР±Р°С€РєРё
+        TimeSpan tsIns;// Р’СЃС‚Р°РІРєР°
+        TimeSpan tsSel;// Р’РёР±С–СЂ
+        bool fCancelBub;// РЇРєС‰Рѕ true, С‚Рѕ Р±СѓР»Р° РЅР°С‚РёСЃРЅСѓС‚Р° РєРЅРѕРїРєР° Stop вЂ“ Р·СѓРїРёРЅРёС‚Рё РІСЃС– РїРѕС‚РѕРєРё
         bool fCancelIns;
         bool fCancelSel;
 
@@ -24,29 +24,29 @@ namespace pr1
         {
             InitializeComponent();
 
-            // Очистити поле textBox1
+            // РћС‡РёСЃС‚РёС‚Рё РїРѕР»Рµ textBox1
             textBox1.Text = "";
 
-            // Очистити ListBox
+            // РћС‡РёСЃС‚РёС‚Рё ListBox
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             listBox3.Items.Clear();
 
-            // Очистити ProgressBar
+            // РћС‡РёСЃС‚РёС‚Рё ProgressBar
             progressBar1.Value = 0;
             progressBar2.Value = 0;
             progressBar3.Value = 0;
 
-            // Деактивувати деякі елементи керування
+            // Р”РµР°РєС‚РёРІСѓРІР°С‚Рё РґРµСЏРєС– РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
             Active(false);
 
-            // Налаштувати внутрішні змінні
+            // РќР°Р»Р°С€С‚СѓРІР°С‚Рё РІРЅСѓС‚СЂС–С€РЅС– Р·РјС–РЅРЅС–
             fCancelBub = false;
             fCancelIns = false;
             fCancelSel = false;
         }
 
-        // Внутрішній метод, який відображає масив елемента управління типу ListBox
+        // Р’РЅСѓС‚СЂС–С€РЅС–Р№ РјРµС‚РѕРґ, СЏРєРёР№ РІС–РґРѕР±СЂР°Р¶Р°С” РјР°СЃРёРІ РµР»РµРјРµРЅС‚Р° СѓРїСЂР°РІР»С–РЅРЅСЏ С‚РёРїСѓ ListBox
         private void DisplayArray(int[] A, ListBox LB)
         {
             LB.Items.Clear();
@@ -54,10 +54,10 @@ namespace pr1
                 LB.Items.Add(A[i]);
         }
 
-        // Внутрішній метод активації елементів керування
+        // Р’РЅСѓС‚СЂС–С€РЅС–Р№ РјРµС‚РѕРґ Р°РєС‚РёРІР°С†С–С— РµР»РµРјРµРЅС‚С–РІ РєРµСЂСѓРІР°РЅРЅСЏ
         private void Active(bool active)
         {
-            // Зробити активними/неактивними деякі елементи управління
+            // Р—СЂРѕР±РёС‚Рё Р°РєС‚РёРІРЅРёРјРё/РЅРµР°РєС‚РёРІРЅРёРјРё РґРµСЏРєС– РµР»РµРјРµРЅС‚Рё СѓРїСЂР°РІР»С–РЅРЅСЏ
             label2.Enabled = active;
             label3.Enabled = active;
             label4.Enabled = active;
@@ -74,29 +74,29 @@ namespace pr1
             button3.Enabled = active;
         }
 
-        // Кнопка "Generate array"
+        // РљРЅРѕРїРєР° "Generate array"
         private void button1_Click(object sender, EventArgs e)
         {
-            // Деактивувати деякі елементи керування
+            // Р”РµР°РєС‚РёРІСѓРІР°С‚Рё РґРµСЏРєС– РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
             Active(false);
 
-            // Налаштувати мітки
+            // РќР°Р»Р°С€С‚СѓРІР°С‚Рё РјС–С‚РєРё
             label5.Text = "";
             label6.Text = "";
             label7.Text = "";
 
-            // Запустити генерування масиву в потоці
+            // Р—Р°РїСѓСЃС‚РёС‚Рё РіРµРЅРµСЂСѓРІР°РЅРЅСЏ РјР°СЃРёРІСѓ РІ РїРѕС‚РѕС†С–
             if (!backgroundWorker1.IsBusy)
-                backgroundWorker1.RunWorkerAsync();// згенерувати подію DoWork
+                backgroundWorker1.RunWorkerAsync();// Р·РіРµРЅРµСЂСѓРІР°С‚Рё РїРѕРґС–СЋ DoWork
         }
 
-        // Кнопка "Sort" - запустити потоки виконання
+        // РљРЅРѕРїРєР° "Sort" - Р·Р°РїСѓСЃС‚РёС‚Рё РїРѕС‚РѕРєРё РІРёРєРѕРЅР°РЅРЅСЏ
         private void button2_Click(object sender, EventArgs e)
         {
-            // Деактивувати кнопку генерування масиву
+            // Р”РµР°РєС‚РёРІСѓРІР°С‚Рё РєРЅРѕРїРєСѓ РіРµРЅРµСЂСѓРІР°РЅРЅСЏ РјР°СЃРёРІСѓ
             button1.Enabled = false;
 
-            // Запуск методів сортування у потоках
+            // Р—Р°РїСѓСЃРє РјРµС‚РѕРґС–РІ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ Сѓ РїРѕС‚РѕРєР°С…
             if (!backgroundWorker2.IsBusy)
                 backgroundWorker2.RunWorkerAsync();
             if (!backgroundWorker3.IsBusy)
@@ -105,14 +105,14 @@ namespace pr1
                 backgroundWorker4.RunWorkerAsync();
         }
 
-        // Кнопка Stop – скасувати виконання всіх потоків
+        // РљРЅРѕРїРєР° Stop вЂ“ СЃРєР°СЃСѓРІР°С‚Рё РІРёРєРѕРЅР°РЅРЅСЏ РІСЃС–С… РїРѕС‚РѕРєС–РІ
         private void button3_Click(object sender, EventArgs e)
         {
             try
             {
-                backgroundWorker2.CancelAsync();// зупинити сортування бульбашкою
-                backgroundWorker3.CancelAsync();// Зупинити сортування вставками
-                backgroundWorker4.CancelAsync();// зупинити сортування вибором
+                backgroundWorker2.CancelAsync();// Р·СѓРїРёРЅРёС‚Рё СЃРѕСЂС‚СѓРІР°РЅРЅСЏ Р±СѓР»СЊР±Р°С€РєРѕСЋ
+                backgroundWorker3.CancelAsync();// Р—СѓРїРёРЅРёС‚Рё СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІСЃС‚Р°РІРєР°РјРё
+                backgroundWorker4.CancelAsync();// Р·СѓРїРёРЅРёС‚Рё СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІРёР±РѕСЂРѕРј
             }
             catch (InvalidOperationException ex)
             {
@@ -121,16 +121,16 @@ namespace pr1
 
         }
 
-        // Виконання потоку, у якому генерується масив чисел
+        // Р’РёРєРѕРЅР°РЅРЅСЏ РїРѕС‚РѕРєСѓ, Сѓ СЏРєРѕРјСѓ РіРµРЅРµСЂСѓС”С‚СЊСЃСЏ РјР°СЃРёРІ С‡РёСЃРµР»
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            // 1. Оголошення внутрішніх змінних
+            // 1. РћРіРѕР»РѕС€РµРЅРЅСЏ РІРЅСѓС‚СЂС–С€РЅС–С… Р·РјС–РЅРЅРёС…
             Random rnd = new Random();
 
-            // 2. Отримати кількість елементів у масиві
+            // 2. РћС‚СЂРёРјР°С‚Рё РєС–Р»СЊРєС–СЃС‚СЊ РµР»РµРјРµРЅС‚С–РІ Сѓ РјР°СЃРёРІС–
             int n = Convert.ToInt32(textBox1.Text);
             
-            // 3. Виділити пам'ять для масивів та заповнити їх значеннями
+            // 3. Р’РёРґС–Р»РёС‚Рё РїР°Рј'СЏС‚СЊ РґР»СЏ РјР°СЃРёРІС–РІ С‚Р° Р·Р°РїРѕРІРЅРёС‚Рё С—С… Р·РЅР°С‡РµРЅРЅСЏРјРё
             array = new int[n];
             arrayBub = new int[n];
             arrayIns = new int[n];
@@ -138,10 +138,10 @@ namespace pr1
             for (int i = 0; i < n; i++)
             {
                 Thread.Sleep(1);
-                array[i] = rnd.Next(1, n + 1);// випадкове число
-                arrayBub[i] = arraySel[i] = arrayIns[i] = array[i];// скопіювати це число
+                array[i] = rnd.Next(1, n + 1);// РІРёРїР°РґРєРѕРІРµ С‡РёСЃР»Рѕ
+                arrayBub[i] = arraySel[i] = arrayIns[i] = array[i];// СЃРєРѕРїС–СЋРІР°С‚Рё С†Рµ С‡РёСЃР»Рѕ
                 
-                // Викликати відображення прогресу (зміни) виконання потоку
+                // Р’РёРєР»РёРєР°С‚Рё РІС–РґРѕР±СЂР°Р¶РµРЅРЅСЏ РїСЂРѕРіСЂРµСЃСѓ (Р·РјС–РЅРё) РІРёРєРѕРЅР°РЅРЅСЏ РїРѕС‚РѕРєСѓ
                 try
                 {
                     backgroundWorker1.ReportProgress((i * 100) / n);
@@ -154,20 +154,20 @@ namespace pr1
             }
         }
 
-        // Сортування методом бульбашки – потік
+        // РЎРѕСЂС‚СѓРІР°РЅРЅСЏ РјРµС‚РѕРґРѕРј Р±СѓР»СЊР±Р°С€РєРё вЂ“ РїРѕС‚С–Рє
         private void backgroundWorker2_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            // Сортується масив arrayBub
+            // РЎРѕСЂС‚СѓС”С‚СЊСЃСЏ РјР°СЃРёРІ arrayBub
             int x;
 
-            // Ініціалізувати час
+            // Р†РЅС–С†С–Р°Р»С–Р·СѓРІР°С‚Рё С‡Р°СЃ
             tsBubble = new TimeSpan(DateTime.Now.Ticks);
             for (int i = 0; i < arrayBub.Length; i++)
             {
-                Thread.Sleep(1);// дати можливість іншим потокам виконуватись паралельно
+                Thread.Sleep(1);// РґР°С‚Рё РјРѕР¶Р»РёРІС–СЃС‚СЊ С–РЅС€РёРј РїРѕС‚РѕРєР°Рј РІРёРєРѕРЅСѓРІР°С‚РёСЃСЊ РїР°СЂР°Р»РµР»СЊРЅРѕ
                 for (int j = arrayBub.Length - 1; j > i; j--)
                 {
-                    if (arrayBub[j - 1] > arrayBub[j])// Сортування за зростанням
+                    if (arrayBub[j - 1] > arrayBub[j])// РЎРѕСЂС‚СѓРІР°РЅРЅСЏ Р·Р° Р·СЂРѕСЃС‚Р°РЅРЅСЏРј
                     {
                         x = arrayBub[j];
                         arrayBub[j] = arrayBub[j - 1];
@@ -175,7 +175,7 @@ namespace pr1
                     }
                 }
                 
-                // Відобразити зміну прогресу
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё Р·РјС–РЅСѓ РїСЂРѕРіСЂРµСЃСѓ
                 try
                 {
                     backgroundWorker2.ReportProgress((i * 100) / arrayBub.Length);
@@ -186,7 +186,7 @@ namespace pr1
                     return;
                 }
 
-                // Перевірка, чи зупинено потік
+                // РџРµСЂРµРІС–СЂРєР°, С‡Рё Р·СѓРїРёРЅРµРЅРѕ РїРѕС‚С–Рє
                 if (backgroundWorker2.CancellationPending)
                 {
                     fCancelBub = true;
@@ -195,29 +195,29 @@ namespace pr1
             }
         }
 
-        // Сортування вставками
+        // РЎРѕСЂС‚СѓРІР°РЅРЅСЏ РІСЃС‚Р°РІРєР°РјРё
         private void backgroundWorker3_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            // 1. Оголосити внутрішні перемінні
+            // 1. РћРіРѕР»РѕСЃРёС‚Рё РІРЅСѓС‚СЂС–С€РЅС– РїРµСЂРµРјС–РЅРЅС–
             int x, i, j;
 
-            // Ініціалізувати час
+            // Р†РЅС–С†С–Р°Р»С–Р·СѓРІР°С‚Рё С‡Р°СЃ
             tsIns = new TimeSpan(DateTime.Now.Ticks);
 
-            // 2. Цикл сортування
+            // 2. Р¦РёРєР» СЃРѕСЂС‚СѓРІР°РЅРЅСЏ
             for (i = 0; i < arrayIns.Length; i++)
             {
 
-                // дати можливість іншим потокам виконуватись паралельно
+                // РґР°С‚Рё РјРѕР¶Р»РёРІС–СЃС‚СЊ С–РЅС€РёРј РїРѕС‚РѕРєР°Рј РІРёРєРѕРЅСѓРІР°С‚РёСЃСЊ РїР°СЂР°Р»РµР»СЊРЅРѕ
                 Thread.Sleep(1);
                 x = arrayIns[i];
 
-                // Пошук місця елемента у послідовності
+                // РџРѕС€СѓРє РјС–СЃС†СЏ РµР»РµРјРµРЅС‚Р° Сѓ РїРѕСЃР»С–РґРѕРІРЅРѕСЃС‚С–
                 for (j = i - 1; j >= 0 && arrayIns[j] > x; j--)
-                    arrayIns[j + 1] = arrayIns[j];// зрушити елемент праворуч
+                    arrayIns[j + 1] = arrayIns[j];// Р·СЂСѓС€РёС‚Рё РµР»РµРјРµРЅС‚ РїСЂР°РІРѕСЂСѓС‡
                 arrayIns[j + 1] = x;
 
-                // Відобразити зміну прогресу
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё Р·РјС–РЅСѓ РїСЂРѕРіСЂРµСЃСѓ
                 try
                 {
                     backgroundWorker3.ReportProgress((i * 100) / arrayIns.Length);
@@ -228,7 +228,7 @@ namespace pr1
                     return;
                 }
 
-                // Перевірка, чи зупинено потік
+                // РџРµСЂРµРІС–СЂРєР°, С‡Рё Р·СѓРїРёРЅРµРЅРѕ РїРѕС‚С–Рє
                 if (backgroundWorker3.CancellationPending)
                 {
                     fCancelIns = true;
@@ -237,38 +237,38 @@ namespace pr1
             }
         }
 
-        // Сортування вибором
+        // РЎРѕСЂС‚СѓРІР°РЅРЅСЏ РІРёР±РѕСЂРѕРј
         private void backgroundWorker4_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            // 1. Оголосити змінні
+            // 1. РћРіРѕР»РѕСЃРёС‚Рё Р·РјС–РЅРЅС–
             int i, j, k;
             int x;
 
-            // 2. Встановити початковий час
+            // 2. Р’СЃС‚Р°РЅРѕРІРёС‚Рё РїРѕС‡Р°С‚РєРѕРІРёР№ С‡Р°СЃ
             tsSel = new TimeSpan(DateTime.Now.Ticks);
 
-            // 3. Цикл сортування вибором
+            // 3. Р¦РёРєР» СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІРёР±РѕСЂРѕРј
             for (i = 0; i < arraySel.Length; i++)
             {
                 
-                // дати можливість іншим потокам виконуватись паралельно
+                // РґР°С‚Рё РјРѕР¶Р»РёРІС–СЃС‚СЊ С–РЅС€РёРј РїРѕС‚РѕРєР°Рј РІРёРєРѕРЅСѓРІР°С‚РёСЃСЊ РїР°СЂР°Р»РµР»СЊРЅРѕ
                 Thread.Sleep(1);
                 k = i;
                 
-                // Пошук найменшого елемента
+                // РџРѕС€СѓРє РЅР°Р№РјРµРЅС€РѕРіРѕ РµР»РµРјРµРЅС‚Р°
                 x = arraySel[i];
                 for (j = i + 1; j < arraySel.Length; j++)
                     if (arraySel[j] < x)
                     {
-                        k = j;// k – індекс найменшого елемента
+                        k = j;// k вЂ“ С–РЅРґРµРєСЃ РЅР°Р№РјРµРЅС€РѕРіРѕ РµР»РµРјРµРЅС‚Р°
                         x = arraySel[j];
                     }
                 
-                // Поміняти місцями найменший елемент з arraySel[i]
+                // РџРѕРјС–РЅСЏС‚Рё РјС–СЃС†СЏРјРё РЅР°Р№РјРµРЅС€РёР№ РµР»РµРјРµРЅС‚ Р· arraySel[i]
                 arraySel[k] = arraySel[i];
                 arraySel[i] = x;
                 
-                // Відобразити зміну прогресу
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё Р·РјС–РЅСѓ РїСЂРѕРіСЂРµСЃСѓ
                 try
                 {
                     backgroundWorker4.ReportProgress((i * 100) / arraySel.Length);
@@ -279,7 +279,7 @@ namespace pr1
                     return;
                 }
                 
-                // Перевірка, чи зупинено потік
+                // РџРµСЂРµРІС–СЂРєР°, С‡Рё Р·СѓРїРёРЅРµРЅРѕ РїРѕС‚С–Рє
                 if (backgroundWorker4.CancellationPending)
                 {
                     fCancelSel = true;
@@ -288,132 +288,132 @@ namespace pr1
             }
         }
 
-        // Зміна (прогрес) виконаної роботи в потоці генерування масиву
+        // Р—РјС–РЅР° (РїСЂРѕРіСЂРµСЃ) РІРёРєРѕРЅР°РЅРѕС— СЂРѕР±РѕС‚Рё РІ РїРѕС‚РѕС†С– РіРµРЅРµСЂСѓРІР°РЅРЅСЏ РјР°СЃРёРІСѓ
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            // Відобразити зміну тексту кнопки "Generate array"
+            // Р’С–РґРѕР±СЂР°Р·РёС‚Рё Р·РјС–РЅСѓ С‚РµРєСЃС‚Сѓ РєРЅРѕРїРєРё "Generate array"
             //button1.Text = "Generate array" + e.ProgressPercentage.ToString() + "%";
             button1.Text = $"Generate array [{e.ProgressPercentage}%]";
 
         }
 
-        // Зміна прогресу у методі сортування бульбашкою
+        // Р—РјС–РЅР° РїСЂРѕРіСЂРµСЃСѓ Сѓ РјРµС‚РѕРґС– СЃРѕСЂС‚СѓРІР°РЅРЅСЏ Р±СѓР»СЊР±Р°С€РєРѕСЋ
         private void backgroundWorker2_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             label5.Text = Convert.ToString(e.ProgressPercentage) + "%";
             progressBar1.Value = e.ProgressPercentage;
         }
 
-        // Прогрес для методу сортування вставками
+        // РџСЂРѕРіСЂРµСЃ РґР»СЏ РјРµС‚РѕРґСѓ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІСЃС‚Р°РІРєР°РјРё
         private void backgroundWorker3_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             label6.Text = Convert.ToString(e.ProgressPercentage) + "%";
             progressBar2.Value = e.ProgressPercentage;
         }
 
-        // Зміна прогресу для алгоритму сортування вибором
+        // Р—РјС–РЅР° РїСЂРѕРіСЂРµСЃСѓ РґР»СЏ Р°Р»РіРѕСЂРёС‚РјСѓ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІРёР±РѕСЂРѕРј
         private void backgroundWorker4_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             label7.Text = Convert.ToString(e.ProgressPercentage) + "%";
             progressBar3.Value = e.ProgressPercentage;
         }
 
-        // Дії після завершення потоку, що генерує масив чисел
+        // Р”С–С— РїС–СЃР»СЏ Р·Р°РІРµСЂС€РµРЅРЅСЏ РїРѕС‚РѕРєСѓ, С‰Рѕ РіРµРЅРµСЂСѓС” РјР°СЃРёРІ С‡РёСЃРµР»
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            // Після того, як масив згенерований, зробити відповідні налаштування
+            // РџС–СЃР»СЏ С‚РѕРіРѕ, СЏРє РјР°СЃРёРІ Р·РіРµРЅРµСЂРѕРІР°РЅРёР№, Р·СЂРѕР±РёС‚Рё РІС–РґРїРѕРІС–РґРЅС– РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ
             button1.Text = "Generate array";
             
-            // Зробити активними видимі елементи керування
+            // Р—СЂРѕР±РёС‚Рё Р°РєС‚РёРІРЅРёРјРё РІРёРґРёРјС– РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
             Active(true);
             
-            // Відобразити масив-оригінал в елементах керування типу ListBox
+            // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РјР°СЃРёРІ-РѕСЂРёРіС–РЅР°Р» РІ РµР»РµРјРµРЅС‚Р°С… РєРµСЂСѓРІР°РЅРЅСЏ С‚РёРїСѓ ListBox
             DisplayArray(array, listBox1);
             DisplayArray(array, listBox2);
             DisplayArray(array, listBox3);
         }
 
-        // Завершення сортування методом пляшечки - виконати кінцеві операції
+        // Р—Р°РІРµСЂС€РµРЅРЅСЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РјРµС‚РѕРґРѕРј РїР»СЏС€РµС‡РєРё - РІРёРєРѕРЅР°С‚Рё РєС–РЅС†РµРІС– РѕРїРµСЂР°С†С–С—
         private void backgroundWorker2_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            // Якщо було скасування сортування
+            // РЇРєС‰Рѕ Р±СѓР»Рѕ СЃРєР°СЃСѓРІР°РЅРЅСЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ
             if (fCancelBub)
             {
-                // Налаштувати відповідно елементи керування
+                // РќР°Р»Р°С€С‚СѓРІР°С‚Рё РІС–РґРїРѕРІС–РґРЅРѕ РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
                 label5.Text = "";
                 
-                // Відобразити масив-оригінал
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РјР°СЃРёРІ-РѕСЂРёРіС–РЅР°Р»
                 DisplayArray(array, listBox1);
                 fCancelBub = false;
             }
             else
             {
-                // Зафіксувати час та вивести його
+                // Р—Р°С„С–РєСЃСѓРІР°С‚Рё С‡Р°СЃ С‚Р° РІРёРІРµСЃС‚Рё Р№РѕРіРѕ
                 TimeSpan time = new TimeSpan(DateTime.Now.Ticks) - tsBubble;
                 label5.Text = String.Format("{0}.{1}.{2}.{3}", time.Hours, time.Minutes,
                 time.Seconds, time.Milliseconds);
                 
-                // Відобразити відсортований масив
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РІС–РґСЃРѕСЂС‚РѕРІР°РЅРёР№ РјР°СЃРёРІ
                 DisplayArray(arrayBub, listBox1);
             }
             
-            // Налаштувати інші елементи керування
+            // РќР°Р»Р°С€С‚СѓРІР°С‚Рё С–РЅС€С– РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
             progressBar1.Value = 0;
             button1.Enabled = true;
         }
 
-        // Завершення потоку сортування вставками
+        // Р—Р°РІРµСЂС€РµРЅРЅСЏ РїРѕС‚РѕРєСѓ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІСЃС‚Р°РІРєР°РјРё
         private void backgroundWorker3_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            // Якщо було скасування сортування
+            // РЇРєС‰Рѕ Р±СѓР»Рѕ СЃРєР°СЃСѓРІР°РЅРЅСЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ
             if (fCancelIns)
             {
-                // Налаштувати відповідно елементи керування
+                // РќР°Р»Р°С€С‚СѓРІР°С‚Рё РІС–РґРїРѕРІС–РґРЅРѕ РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
                 label6.Text = "";
                 
-                // Відобразити масив-оригінал
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РјР°СЃРёРІ-РѕСЂРёРіС–РЅР°Р»
                 DisplayArray(array, listBox2);
                 fCancelIns = false;
             }
             else
             {
-                // Зафіксувати час та вивести його
+                // Р—Р°С„С–РєСЃСѓРІР°С‚Рё С‡Р°СЃ С‚Р° РІРёРІРµСЃС‚Рё Р№РѕРіРѕ
                 TimeSpan time = new TimeSpan(DateTime.Now.Ticks) - tsIns;
                 label6.Text = String.Format("{0}.{1}.{2}.{3}", time.Hours, time.Minutes,
                 time.Seconds, time.Milliseconds);
                 
-                // Відобразити відсортований масив
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РІС–РґСЃРѕСЂС‚РѕРІР°РЅРёР№ РјР°СЃРёРІ
                 DisplayArray(arrayIns, listBox2);
             }
-            // Налаштувати інші елементи керування
+            // РќР°Р»Р°С€С‚СѓРІР°С‚Рё С–РЅС€С– РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
             progressBar2.Value = 0;
             button1.Enabled = true;
         }
 
-        // Завершення сортування вибором
+        // Р—Р°РІРµСЂС€РµРЅРЅСЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РІРёР±РѕСЂРѕРј
         private void backgroundWorker4_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            // Якщо було скасування сортування
+            // РЇРєС‰Рѕ Р±СѓР»Рѕ СЃРєР°СЃСѓРІР°РЅРЅСЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ
             if (fCancelSel)
             {
-                // Налаштувати відповідно елементи керування
+                // РќР°Р»Р°С€С‚СѓРІР°С‚Рё РІС–РґРїРѕРІС–РґРЅРѕ РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
                 label7.Text = "";
                 
-                // Відобразити масив-оригінал
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РјР°СЃРёРІ-РѕСЂРёРіС–РЅР°Р»
                 DisplayArray(array, listBox3);
                 fCancelSel = false;
             }
             else
             {
-                // Зафіксувати час та вивести його
+                // Р—Р°С„С–РєСЃСѓРІР°С‚Рё С‡Р°СЃ С‚Р° РІРёРІРµСЃС‚Рё Р№РѕРіРѕ
                 TimeSpan time = new TimeSpan(DateTime.Now.Ticks) - tsSel;
                 label7.Text = String.Format("{0}.{1}.{2}.{3}", time.Hours, time.Minutes,
                 time.Seconds, time.Milliseconds);
                 
-                // Відобразити відсортований масив
+                // Р’С–РґРѕР±СЂР°Р·РёС‚Рё РІС–РґСЃРѕСЂС‚РѕРІР°РЅРёР№ РјР°СЃРёРІ
                 DisplayArray(arraySel, listBox3);
             }
-            // Налаштувати інші елементи керування
+            // РќР°Р»Р°С€С‚СѓРІР°С‚Рё С–РЅС€С– РµР»РµРјРµРЅС‚Рё РєРµСЂСѓРІР°РЅРЅСЏ
             progressBar3.Value = 0;
             button1.Enabled = true;
         }
