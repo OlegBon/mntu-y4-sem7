@@ -8,6 +8,7 @@ tasks = [
     {'name': 'z2', 'filename': 'pr2_z2_data.csv'},
     {'name': 'z3', 'filename': 'pr2_z3_data.csv', 'weights': [0.3, 0.7]},
     {'name': 'z4', 'filename': 'pr2_z4_data.csv', 'metric': 'cityblock'},
+    {'name': 'z5', 'filename': 'pr2_z5_data.csv', 'metric': 'jaccard'},
 ]
 
 for task in tasks:
@@ -17,7 +18,7 @@ for task in tasks:
     result_path = os.path.join('results', f"pr2_{task['name']}_euclidean_matrix.csv")
 
     df = pd.read_csv(data_path)
-    data = df[['X1', 'X2']].values
+    data = df.drop(columns=['ID']).values
 
     # Вибір метрики
     if 'weights' in task:
