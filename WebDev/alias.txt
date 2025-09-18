@@ -1,0 +1,1 @@
+"Веб орієнтована розробка програмного забезпечення", "ВОРПЗ", "Web-oriented software development", "Веб-розробка", "WebDev", "Web Software Engineering", "WSE", "Frontend Engineering", "FE", "Client-side Development", "CSD"

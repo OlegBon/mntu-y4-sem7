@@ -1,0 +1,37 @@
+# Build output
+dist/
+build/
+out/
+public/
+
+# JS/TS артефакти
+*.js.map
+*.tsbuildinfo
+*.min.js
+*.min.css
+
+# Збірники та фреймворки
+.next/
+.nuxt/
+.svelte-kit/
+.parcel-cache/
+.vite/
+.cache/
+
+# Тестування
+coverage/
+__tests__/
+*.spec.*
+*.test.*
+cypress/
+playwright-report/
+
+# Лінтери та форматери
+.eslintcache
+.stylelintcache
+.prettierignore
+.prettierrc*
+
+# IDE розширення
+*.code-workspace
+.history/
