@@ -6,7 +6,7 @@ import os
 tasks = [
     {'name': 'z1', 'filename': 'pr2_z1_data.csv'},
     {'name': 'z2', 'filename': 'pr2_z2_data.csv'},
-    # Додай інші завдання тут
+    {'name': 'z3', 'filename': 'pr2_z3_data.csv', 'weights': [0.3, 0.7]},
 ]
 
 for task in tasks:
@@ -16,9 +16,16 @@ for task in tasks:
     result_path = os.path.join('results', f"pr2_{task['name']}_euclidean_matrix.csv")
 
     df = pd.read_csv(data_path)
-
     data = df[['X1', 'X2']].values
-    distance_matrix = squareform(pdist(data, metric='euclidean'))
+
+    if 'weights' in task:
+        weights = np.array(task['weights'])
+        def weighted_euclidean(u, v):
+            return np.sqrt(np.sum(weights * (u - v)**2))
+        distance_matrix = squareform(pdist(data, metric=weighted_euclidean))
+    else:
+        distance_matrix = squareform(pdist(data, metric='euclidean'))
+
     distance_matrix = np.round(distance_matrix, 2)
 
     object_labels = df['ID'].astype(str).tolist()
