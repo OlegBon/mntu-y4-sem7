@@ -1,19 +1,29 @@
 import pandas as pd
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
+import os
 
-df = pd.read_csv('data/pr2_z1_data.csv')
+tasks = [
+    {'name': 'z1', 'filename': 'pr2_z1_data.csv'},
+    {'name': 'z2', 'filename': 'pr2_z2_data.csv'},
+    # Додай інші завдання тут
+]
 
-data = df[['X1', 'X2']].values
+for task in tasks:
+    print(f"\n🔄 Обробка завдання {task['name']}")
 
-distance_matrix = squareform(pdist(data, metric='euclidean'))
+    data_path = os.path.join('data', task['filename'])
+    result_path = os.path.join('results', f"{task['name']}_euclidean_matrix.csv")
 
-distance_matrix = np.round(distance_matrix, 2)
+    df = pd.read_csv(data_path)
 
-object_labels = df['ID'].astype(str).tolist()
-dist_df = pd.DataFrame(distance_matrix, index=object_labels, columns=object_labels)
-dist_df.index.name = 'ID'
+    data = df[['X1', 'X2']].values
+    distance_matrix = squareform(pdist(data, metric='euclidean'))
+    distance_matrix = np.round(distance_matrix, 2)
 
-dist_df.to_csv('results/pr2_z1_euclidean_matrix.csv', float_format='%.2f')
+    object_labels = df['ID'].astype(str).tolist()
+    dist_df = pd.DataFrame(distance_matrix, index=object_labels, columns=object_labels)
+    dist_df.index.name = 'ID'
 
-print(dist_df)
+    dist_df.to_csv(result_path, float_format='%.2f')
+    print(dist_df)
