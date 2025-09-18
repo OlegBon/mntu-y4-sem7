@@ -13,7 +13,7 @@ for task in tasks:
     print(f"\n🔄 Обробка завдання {task['name']}")
 
     data_path = os.path.join('data', task['filename'])
-    result_path = os.path.join('results', f"{task['name']}_euclidean_matrix.csv")
+    result_path = os.path.join('results', f"pr2_{task['name']}_euclidean_matrix.csv")
 
     df = pd.read_csv(data_path)
 
