@@ -1,8 +1,8 @@
-#include <mpi.h>
+п»ї#include <mpi.h>
 #include <stdio.h>
 
 int main(int argc, char** argv) {
-    const int N = 10000000; // Загальна кількість чисел для сумування
+    const int N = 10000000; // Р—Р°РіР°Р»СЊРЅР° РєС–Р»СЊРєС–СЃС‚СЊ С‡РёСЃРµР» РґР»СЏ СЃСѓРјСѓРІР°РЅРЅСЏ
 
     int myrank, totalnodes;
     //int sum = 0, startval, endval, accum;
@@ -13,10 +13,10 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &totalnodes);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
-    // Початок вимірювання часу
+    // РџРѕС‡Р°С‚РѕРє РІРёРјС–СЂСЋРІР°РЅРЅСЏ С‡Р°СЃСѓ
     double start_time = MPI_Wtime();
 
-    // Розрахунок діапазону
+    // Р РѕР·СЂР°С…СѓРЅРѕРє РґС–Р°РїР°Р·РѕРЅСѓ
     startval = N * myrank / totalnodes + 1;
     endval = N * (myrank + 1) / totalnodes;
 
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
             sum += accum;
         }
 
-        // Кінець вимірювання часу
+        // РљС–РЅРµС†СЊ РІРёРјС–СЂСЋРІР°РЅРЅСЏ С‡Р°СЃСѓ
         double end_time = MPI_Wtime();
         double elapsed = end_time - start_time;
 
