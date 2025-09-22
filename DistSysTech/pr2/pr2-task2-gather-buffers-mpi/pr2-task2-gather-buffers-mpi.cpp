@@ -1,8 +1,8 @@
-#include <mpi.h>
+п»ї#include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 10 // Розмір локального буфера
+#define SIZE 10 // Р РѕР·РјС–СЂ Р»РѕРєР°Р»СЊРЅРѕРіРѕ Р±СѓС„РµСЂР°
 
 int main(int argc, char** argv) {
     int rank, size;
@@ -14,40 +14,45 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    // Ініціалізація локального буфера
+    // Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ Р»РѕРєР°Р»СЊРЅРѕРіРѕ Р±СѓС„РµСЂР°
     for (int i = 0; i < SIZE; ++i)
         buffer[i] = rank * 10 + i;
 
-    // Вивід локального буфера на кожному ранку
+    // Р’РёРІС–Рґ Р»РѕРєР°Р»СЊРЅРѕРіРѕ Р±СѓС„РµСЂР° РЅР° РєРѕР¶РЅРѕРјСѓ СЂР°РЅРєСѓ
     printf("Initial buffer on rank %d: ", rank);
     for (int i = 0; i < SIZE; ++i)
         printf("%d ", buffer[i]);
     printf("\n");
 
-    // Вимірювання часу передачі
+    // Р’РёРјС–СЂСЋРІР°РЅРЅСЏ С‡Р°СЃСѓ РїРµСЂРµРґР°С‡С–
     start_time = MPI_Wtime();
 
     if (rank != 0) {
-        // Вузли 1...n надсилають свої буфери до rank 0
+        // Р’СѓР·Р»Рё 1...n РЅР°РґСЃРёР»Р°СЋС‚СЊ СЃРІРѕС— Р±СѓС„РµСЂРё РґРѕ rank 0
         MPI_Send(buffer, SIZE, MPI_INT, 0, 0, MPI_COMM_WORLD);
     }
     else {
-        // rank 0 приймає буфери від інших вузлів
+        // rank 0 РїСЂРёР№РјР°С” Р±СѓС„РµСЂРё РІС–Рґ С–РЅС€РёС… РІСѓР·Р»С–РІ
         int* full_buffer = (int*)malloc(SIZE * size * sizeof(int));
+		// РџРµСЂРµРІС–СЂРєР° РІРёРґС–Р»РµРЅРЅСЏ РїР°Рј'СЏС‚С–
+        if (full_buffer == NULL) {
+            fprintf(stderr, "Memory allocation failed\n");
+            MPI_Abort(MPI_COMM_WORLD, 1);
+        }
 
-        // Копіюємо власний буфер
+        // РљРѕРїС–СЋС”РјРѕ РІР»Р°СЃРЅРёР№ Р±СѓС„РµСЂ
         for (int i = 0; i < SIZE; ++i)
             full_buffer[i] = buffer[i];
 
-        // Прийом буферів від інших ранків
+        // РџСЂРёР№РѕРј Р±СѓС„РµСЂС–РІ РІС–Рґ С–РЅС€РёС… СЂР°РЅРєС–РІ
         for (int i = 1; i < size; ++i) {
             MPI_Recv(&full_buffer[i * SIZE], SIZE, MPI_INT, i, 0, MPI_COMM_WORLD, &status);
         }
 
-        // Вимірювання часу
+        // Р’РёРјС–СЂСЋРІР°РЅРЅСЏ С‡Р°СЃСѓ
         end_time = MPI_Wtime();
 
-        // Вивід фінального зібраного буфера як один масив
+        // Р’РёРІС–Рґ С„С–РЅР°Р»СЊРЅРѕРіРѕ Р·С–Р±СЂР°РЅРѕРіРѕ Р±СѓС„РµСЂР° СЏРє РѕРґРёРЅ РјР°СЃРёРІ
         printf("\nFinal gathered buffer on rank 0:\n");
         for (int i = 0; i < SIZE * size; ++i)
             printf("%d ", full_buffer[i]);
