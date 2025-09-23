@@ -30,3 +30,9 @@ Desktop.ini
 *.tmp
 *.bak
 *.orig
+
+# Build outputs
+**/x64/
+**/Debug/
+*.obj
+*.recipe
