@@ -1,6 +1,6 @@
 # Звіт: Побудова дерева рішень для прогнозу покупки
 
-Дата: 2025-09-20 13:39
+Дата: 2025-09-25 12:10
 
 ## Мета
 
@@ -8,7 +8,7 @@
 
 ## Візуалізація
 
-![](results/sr3-nonlin-regres-analysis/sr3-task2-decision-tree.png)
+![Дерево рішень](results/sr3-nonlin-regres-analysis/sr3-task2-decision-tree.png)
 
 ## Розрахунки
 

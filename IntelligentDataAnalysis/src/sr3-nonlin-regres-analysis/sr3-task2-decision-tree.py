@@ -59,7 +59,7 @@ with open("results/sr3-nonlin-regres-analysis/report-decision-tree.md", "w", enc
     f.write("Синтезувати модель дерева рішень для класифікації факту покупки на основі поведінкових ознак користувача (`page_view`, `ad_click`).\n\n")
 
     f.write("## Візуалізація\n\n")
-    f.write("![](results/sr3-nonlin-regres-analysis/sr3-task2-decision-tree.png)\n\n")
+    f.write("![Дерево рішень](results/sr3-nonlin-regres-analysis/sr3-task2-decision-tree.png)\n\n")
 
     f.write("## Розрахунки\n\n")
     f.write("```\n")
