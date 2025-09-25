@@ -66,5 +66,5 @@ with open("results/sr1-correlation/report.md", "a", encoding="utf-8") as f:
     f.write(f"- Коефіцієнт: {corr:.4f}\n")
     f.write(f"- p-value: {pval:.4f}\n")
     f.write(f"- Тип зв’язку: {direction}, сила: {strength}\n")
-    f.write(f"- Гістограми: ![Розподіл значень](results/histograms.png)\n")
-    f.write(f"- Scatterplot: ![Графік кореляції](results/scatterplot.png)\n")
+    f.write(f"- Гістограми: ![Розподіл значень](histograms.png)\n")
+    f.write(f"- Scatterplot: ![Графік кореляції](scatterplot.png)\n")
