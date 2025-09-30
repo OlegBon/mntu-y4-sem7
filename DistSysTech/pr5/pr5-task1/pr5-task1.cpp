@@ -1,0 +1,13 @@
+﻿#include <stdio.h>
+#include <omp.h>
+
+int main() {
+	int n = 16; // Кількість ітерацій
+	int i;
+	#pragma omp parallel shared(n) private(i)
+	{
+		#pragma omp for
+		for (i = 0; i < n; i++)
+			printf("Thread %d executes loop iteration %d\n", omp_get_thread_num(), i);
+	}
+}
