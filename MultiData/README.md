@@ -121,4 +121,26 @@ python src/pr3.py
 - `matplotlib`, `seaborn` (для візуалізацій)
 - `pytest`, `rich`, `jupyter` (опціонально)
 
+## ▶️ Приклад роботи з `venv` (Windows PowerShell)
+
+```bash
+# Активуємо віртуальне середовище
+.venv\Scripts\Activate.ps1
+
+# Встановлюємо необхідну бібліотеку
+pip install scikit-fuzzy
+
+# Перевіряємо встановлення
+pip show scikit-fuzzy
+
+# Фіксуємо залежності
+pip freeze > requirements.txt
+
+# Запускаємо демо-файл
+python src/pr3-expert-system/pr3-task0-scikit-fuzzy.py
+
+# Деактивуємо середовище
+deactivate
+```
+
 _Модуль створено з метою практичного освоєння методів інтелектуального аналізу даних, побудови аналітичних пайплайнів та розвитку інженерного мислення._
