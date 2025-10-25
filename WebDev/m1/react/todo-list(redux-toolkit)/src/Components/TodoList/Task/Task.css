@@ -1,0 +1,38 @@
+.Task {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  border: 1px solid black;
+  margin: 10px;
+  background-color: white;
+}
+
+.TaskCompleted {
+  background-color: #bdbdbd;
+}
+
+.Task p {
+  margin: 0;
+}
+
+.Task p.completed {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.RemoveBtn,
+.ClearAll {
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.RemoveBtn:hover,
+.ClearAll:hover {
+  background-color: #c0392b;
+}
