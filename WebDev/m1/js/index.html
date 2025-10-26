@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Система обліку рейсів суден</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Система обліку рейсів суден</h1>
+    </header>
+
+    <section class="intro">
+      <div class="intro-text">
+        <h2>Про систему</h2>
+        <p>
+          Ця система дозволяє планувати рейси суден, включаючи маршрут,
+          тривалість та склад екіпажу. Вона корисна для портових служб,
+          логістичних компаній та морських операторів.
+        </p>
+        <ul>
+          <li>Планування маршрутів</li>
+          <li>Контроль тривалості рейсу</li>
+          <li>Облік екіпажу</li>
+        </ul>
+        <a href="https://www.marinetraffic.com/" target="_blank"
+          >Переглянути карту суден</a
+        >
+      </div>
+      <div class="slider">
+        <button id="prevBtn">&lt;</button>
+        <img id="sliderImage" src="img/ship1.jpg" alt="Судно" />
+        <button id="nextBtn">&gt;</button>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>Планування рейсу</h2>
+      <form id="voyageForm">
+        <label
+          >Маршрут:
+          <select id="route">
+            <option value="">Оберіть маршрут</option>
+            <option value="Одеса - Стамбул">Одеса - Стамбул</option>
+            <option value="Харків - Варна">Харків - Варна</option>
+            <option value="Миколаїв - Констанца">Миколаїв - Констанца</option>
+          </select>
+        </label>
+        <label
+          >Тривалість рейсу:
+          <select id="duration">
+            <option value="">Оберіть тривалість</option>
+            <option value="3 дні">3 дні</option>
+            <option value="1 тиждень">1 тиждень</option>
+            <option value="2 тижні">2 тижні</option>
+          </select>
+        </label>
+        <label
+          >Склад екіпажу:
+          <input type="number" id="crew" min="1" placeholder="Кількість осіб" />
+        </label>
+        <button type="submit" id="planBtn">Планувати</button>
+      </form>
+    </section>
+
+    <section class="table-section">
+      <h2>Заплановані рейси</h2>
+      <table id="voyageTable">
+        <thead>
+          <tr>
+            <th>Маршрут</th>
+            <th>Тривалість</th>
+            <th>Екіпаж</th>
+            <th>Статус</th>
+            <th>Дія</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="table-actions">
+        <button id="clearVoyagesBtn">Очистити заплановані рейси</button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
