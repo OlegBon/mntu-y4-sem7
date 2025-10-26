@@ -5,7 +5,7 @@ import { AddTask, ChangeTaskText, DeleteAll } from "../../Redux/TodoListSlice";
 
 const TodoList = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
-  console.log(tasks);
+  // console.log(tasks);
   const taskText = useSelector((state) => state.tasks.taskText);
   const dispatch = useDispatch();
 
@@ -38,8 +38,8 @@ const TodoList = () => {
         )}
       </div>
       <div>
-        {tasks.map((task) => (
-          <Task task={task} />
+        {tasks.map((task, index) => (
+          <Task key={task.id || index} task={task} />
         ))}
       </div>
     </div>

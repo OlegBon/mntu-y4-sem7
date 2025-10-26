@@ -21,7 +21,8 @@ const Task = ({ task }) => {
     >
       <input
         type="checkbox"
-        onClick={() => ChangeActiveHandler(task)}
+        // onClick={() => ChangeActiveHandler(task)}
+        onChange={() => ChangeActiveHandler(task)}
         checked={task.completed}
       />
       <p className={task.completed ? "completed" : ""}>{task.text}</p>
