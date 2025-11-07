@@ -1,0 +1,38 @@
+.map-container {
+  margin-top: 20px;
+  border: 2px solid #333;
+  width: 100%;
+  max-width: 600px; /* Розмір */
+  height: 400px;
+  overflow: hidden; /* Ховаємо все, що за межами карти */
+}
+
+.map-background {
+  width: 100%;
+  height: 100%;
+  position: relative; /* Для позиціонування робота */
+
+  background-image: url("/img/kharkiv.jpg"); /* Зображення фону */
+  background-size: cover;
+}
+
+.robot-icon {
+  position: absolute;
+  transition: top 0.5s ease, left 0.5s ease;
+
+  width: 40px;
+  height: 40px;
+}
+
+.baza-icon {
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+}
+
+.robot-icon img,
+.baza-icon img {
+  width: 100%;
+  height: 100%;
+}
