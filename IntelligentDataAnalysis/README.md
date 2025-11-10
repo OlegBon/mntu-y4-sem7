@@ -233,7 +233,7 @@ python src/pr4-mamdani-sugeno/pr4-task0-comparison.py
 - [Самостійна робота №5 — Регресія Кокса](results/sr5-cox-regression/report.md)
 - [Практична робота №4 — Порівняння Мамдані та Сугено](results/pr4-mamdani-sugeno/report.md)
 - [Самостійна робота №11 — Аналіз часового ряду (Задача 1)](results/sr11-time-series-analysis/task1_autocorr.md)
-- [Самостійна робота №12 — Мережевий аналіз (NetworkX)](https://www.google.com/search?q=results/diamond/12_network_analysis_report.md)
+- [Самостійна робота №12 — Мережевий аналіз (NetworkX)](results/diamond/12_network_analysis_report.md)
 
 ## 🧩 Принципи організації
 
