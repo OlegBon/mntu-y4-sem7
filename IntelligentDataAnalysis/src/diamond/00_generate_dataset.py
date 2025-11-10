@@ -10,7 +10,8 @@ print("Початок генерації набору даних (v2)...")
 NUM_ROWS = 1000
 START_DATE = datetime(2023, 1, 1)
 END_DATE = datetime(2025, 12, 31) # Дата кінця періоду сертифікації
-TODAY = datetime.now() # "Сьогодні" для розрахунку цензурованих даних
+# TODAY = datetime.now() # "Сьогодні" для розрахунку цензурованих даних
+TODAY = END_DATE # "Сьогодні" - це дата нашого зрізу даних
 
 OUTPUT_DIR = "data/diamond"
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "diamonds_dataset.csv")
