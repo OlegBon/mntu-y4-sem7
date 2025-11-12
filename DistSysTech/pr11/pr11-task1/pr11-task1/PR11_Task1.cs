@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 
-namespace Lab1_Task1
+namespace PR11_Task1
 {
-    class Program
+    class PR11_Task1
     {
         private static readonly Random rand = new Random();
 
