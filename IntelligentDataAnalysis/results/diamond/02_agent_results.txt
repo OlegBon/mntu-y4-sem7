@@ -1,0 +1,33 @@
+Поточний % відхилень: 3.10%
+
+--- LDA (Linear Discriminant Analysis) ---
+Accuracy: 0.7470
+Confusion Matrix:
+[[717 252]
+ [  1  30]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.74      0.85       969
+           1       0.11      0.97      0.19        31
+
+    accuracy                           0.75      1000
+   macro avg       0.55      0.85      0.52      1000
+weighted avg       0.97      0.75      0.83      1000
+
+
+--- QDA (Quadratic Discriminant Analysis) ---
+Accuracy: 0.8190
+Confusion Matrix:
+[[789 180]
+ [  1  30]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.81      0.90       969
+           1       0.14      0.97      0.25        31
+
+    accuracy                           0.82      1000
+   macro avg       0.57      0.89      0.57      1000
+weighted avg       0.97      0.82      0.88      1000
+
