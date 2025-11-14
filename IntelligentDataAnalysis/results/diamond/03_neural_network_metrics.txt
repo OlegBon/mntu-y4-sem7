@@ -1,0 +1,18 @@
+--- Результати моделі MLPClassifier (Варіант 1: 3-1, logistic) ---
+
+Accuracy: 0.9660
+
+--- Classification Report ---
+                  precision    recall  f1-score   support
+
+  Not Investment       0.97      1.00      0.98       966
+Investment Grade       0.00      0.00      0.00        34
+
+        accuracy                           0.97      1000
+       macro avg       0.48      0.50      0.49      1000
+    weighted avg       0.93      0.97      0.95      1000
+
+
+--- Confusion Matrix ---
+[[966   0]
+ [ 34   0]]
