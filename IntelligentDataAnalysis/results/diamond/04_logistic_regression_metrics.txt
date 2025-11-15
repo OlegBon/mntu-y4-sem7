@@ -1,0 +1,18 @@
+--- Результати моделі LogisticRegression (class_weight='balanced') ---
+
+Accuracy: 0.9280
+
+--- Classification Report ---
+                  precision    recall  f1-score   support
+
+  Not Investment       1.00      0.93      0.96       966
+Investment Grade       0.32      0.97      0.48        34
+
+        accuracy                           0.93      1000
+       macro avg       0.66      0.95      0.72      1000
+    weighted avg       0.98      0.93      0.94      1000
+
+
+--- Confusion Matrix ---
+[[895  71]
+ [  1  33]]
