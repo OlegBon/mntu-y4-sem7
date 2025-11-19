@@ -128,7 +128,7 @@ plt.savefig(PLOT_MATRIX)
 plt.close()
 
 # Генерація звіту
-print(f"Генерація звіту: {REPORT_FILE}...")
+print(f"Генерація звіту: {REPORT_FILE}")
 with open(REPORT_FILE, 'w', encoding='utf-8') as f:
     f.write(f"# Звіт з Практичної роботи №6: Побудова OLAP-зрізів\n\n")
     f.write(f"**Дата:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n")
