@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Якщо запитують index.php
+RewriteCond %{THE_REQUEST} /index\.php [NC]
+# Перенаправляємо на /freight_app/ (без index.php)
+RewriteRule ^(.*)index\.php$ /freight_app/$1 [R=301,L]
