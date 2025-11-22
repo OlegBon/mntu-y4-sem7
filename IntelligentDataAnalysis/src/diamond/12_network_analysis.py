@@ -9,6 +9,7 @@ DATA_FILE = os.path.join("data", "diamond", "diamonds_dataset.csv")
 RESULTS_DIR = os.path.join("results", "diamond")
 REPORT_FILE = os.path.join(RESULTS_DIR, "12_network_analysis_report.md")
 PLOT_FILE = os.path.join(RESULTS_DIR, "12_expert_clarity_graph.png")
+PLOT_BUBBLE_FILE = os.path.join(RESULTS_DIR, "12_expert_clarity_graph_bubble.png")
 
 # Створення папки для результатів, якщо її не існує
 os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -115,6 +116,35 @@ plt.savefig(PLOT_FILE)
 plt.close()
 print("Візуалізацію збережено.")
 
+# Візуалізація бульбашкового графа
+print(f"\nЗбереження бульбашкового графа у файл: {PLOT_BUBBLE_FILE}")
+plt.figure(figsize=(14, 14))
+
+# Розраховуємо розмір вузлів на основі сумарної ваги (Weighted Degree)
+node_degrees = dict(G.degree(weight='weight'))
+# Масштабування розміру (емпірично підібраний коефіцієнт * 20 + мінімальний розмір)
+node_sizes = [node_degrees[node] * 20 + 500 for node in G.nodes()]
+
+# Малюємо вузли з динамічним розміром ("бульбашки")
+nx.draw_networkx_nodes(G, pos, 
+                       nodelist=G.nodes(), 
+                       node_color=['skyblue' if n in expert_nodes else 'lightgreen' for n in G.nodes()],
+                       node_size=node_sizes, 
+                       alpha=0.8)
+
+# Малюємо ребра (так само динамічна товщина)
+nx.draw_networkx_edges(G, pos, width=edge_widths, alpha=0.5, edge_color='gray')
+
+# Додаємо підписи з кількістю (сумарною вагою) всередині або поруч з вузлами
+labels_with_counts = {node: f"{node}\n({node_degrees[node]})" for node in G.nodes()}
+nx.draw_networkx_labels(G, pos, labels=labels_with_counts, font_size=8)
+
+plt.title("Бульбашковий граф (Розмір вузла = Сумарна кількість оцінок)", size=16)
+plt.axis('off')
+plt.savefig(PLOT_BUBBLE_FILE)
+plt.close()
+print("Бульбашкову візуалізацію збережено.")
+
 # Генерація звіту
 print(f"Генерація звіту: {REPORT_FILE}")
 with open(REPORT_FILE, 'w', encoding='utf-8') as f:
@@ -133,6 +163,11 @@ with open(REPORT_FILE, 'w', encoding='utf-8') as f:
     f.write("### 2.2. Аналіз найкоротшого шляху (на основі BFS)\n\n")
     f.write(path_result + "\n")
     f.write("\n## 3. Візуалізація графа\n\n")
-    f.write(f"![Візуалізація графа](12_expert_clarity_graph.png)\n")
+    f.write("### 3.1. Візуалізація (Товщина ребер = Сила зв'язку)\n\n")
+    f.write(f"![Візуалізація графа](12_expert_clarity_graph.png)\n\n")
+    
+    f.write("### 3.2. Бульбашкова візуалізація (Розмір вузла = Загальна активність)\n\n")
+    f.write("На цьому графіку розмір кола пропорційний загальній кількості оцінок, зроблених експертом (або отриманих категорією чистоти).\n\n")
+    f.write(f"![Бульбашкова візуалізація](12_expert_clarity_graph_bubble.png)\n")
 
 print("Аналіз завершено")
