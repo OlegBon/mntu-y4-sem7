@@ -1,6 +1,6 @@
 # 📘 MNTU - 4 курс, 7 семестр
 
-![Repo Status](https://img.shields.io/badge/status-active-brightgreen)
+![Repo Status](https://img.shields.io/badge/status-completed-success)
 ![Python Version](https://img.shields.io/badge/python-3.13.7-blue)
 ![C%23 Version](https://img.shields.io/badge/C%23-12.0-purple)
 ![C++ Version](https://img.shields.io/badge/C++-20-orange)
